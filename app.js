@@ -17,15 +17,17 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 // bind connection to an error event
 db.on('error', console.error.bind(console, 'The database blew up.'));
+db.once('open', function(){
+    console.log('Connected to ' + mongoDB);
+});
 
-// create route for users
-const user = require('./routes/user.route');
-
-// define middleware
-app.use('/users', user);
+// setup body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+// create route for users
+const user = require('./routes/user.route');
+app.use('/users', user);
 
 // spin up the server
 let port = 1234;
