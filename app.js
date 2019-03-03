@@ -9,7 +9,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 // setup mongoose connection
-const mongoDB = 'mongodb://127.0.0.1/flywheelDB';
+const mongoDB = 'mongodb://localhost/flywheelDB';
+// const mongoDB = 'mongodb+srv://mongo_user:nOAOfjF3454sd6nS@anagram-kts1t.mongodb.net/test?retryWrites=true';
 mongoose.connect(mongoDB, {useNewUrlParser: true});
 // use global promise library
 mongoose.Promise = global.Promise;
